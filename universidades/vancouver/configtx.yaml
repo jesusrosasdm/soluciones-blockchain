@@ -1,0 +1,22 @@
+---
+################################################################################
+#   Section: Organizations
+################################################################################
+Organizations:
+    - &Vancouver
+        Name: VancouverMSP
+        ID: VancouverMSP
+        MSPDir: ../organizations/peerOrganizations/vancouver.universidades.com/msp
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('VancouverMSP.admin', 'VancouverMSP.peer', 'VancouverMSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('VancouverMSP.admin', 'VancouverMSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('VancouverMSP.admin')"
+            Endorsement:
+                Type: Signature
+                Rule: "OR('VancouverMSP.peer')"
