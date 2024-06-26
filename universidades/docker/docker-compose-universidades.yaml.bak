@@ -2,8 +2,8 @@ version: '3.7'
 
 volumes:
   orderer.universidades.com:
-  peer0.barcelona.universidades.com:
-  peer0.mexico.universidades.com:
+  peer0.madrid.universidades.com:
+  peer0.bogota.universidades.com:
 
 networks:
   test:
@@ -65,8 +65,8 @@ services:
     networks:
       - test
 
-  peer0.barcelona.universidades.com:
-    container_name: peer0.barcelona.universidades.com
+  peer0.madrid.universidades.com:
+    container_name: peer0.madrid.universidades.com
     image: hyperledger/fabric-peer:2.3.3
     labels:
       service: hyperledger-fabric
@@ -80,13 +80,13 @@ services:
       - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
       - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
       - CORE_PEER_ID=peer0.madrid.universidades.com
-      - CORE_PEER_ADDRESS=peer0.barcelona.universidades.com:7051
+      - CORE_PEER_ADDRESS=peer0.madrid.universidades.com:7051
       - CORE_PEER_LISTENADDRESS=0.0.0.0:7051
-      - CORE_PEER_CHAINCODEADDRESS=peer0.barcelona.universidades.com:7052
+      - CORE_PEER_CHAINCODEADDRESS=peer0.madrid.universidades.com:7052
       - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7052
-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.barcelona.universidades.com:7051
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.barcelona.universidades.com:7051
-      - CORE_PEER_LOCALMSPID=BarcelonaMSP
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.madrid.universidades.com:7051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.madrid.universidades.com:7051
+      - CORE_PEER_LOCALMSPID=MadridMSP
       - CORE_OPERATIONS_LISTENADDRESS=0.0.0.0:17051
       - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
       - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdb0:5984
@@ -94,9 +94,9 @@ services:
       - CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD=adminpw
     volumes:
         - /var/run/docker.sock:/host/var/run/docker.sock
-        - ../organizations/peerOrganizations/barcelona.universidades.com/peers/peer0.barcelona.universidades.com/msp:/etc/hyperledger/fabric/msp
-        - ../organizations/peerOrganizations/barcelona.universidades.com/peers/peer0.barcelona.universidades.com/tls:/etc/hyperledger/fabric/tls
-        - peer0.barcelona.universidades.com:/var/hyperledger/production
+        - ../organizations/peerOrganizations/madrid.universidades.com/peers/peer0.madrid.universidades.com/msp:/etc/hyperledger/fabric/msp
+        - ../organizations/peerOrganizations/madrid.universidades.com/peers/peer0.madrid.universidades.com/tls:/etc/hyperledger/fabric/tls
+        - peer0.madrid.universidades.com:/var/hyperledger/production
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
     command: peer node start
     ports:
@@ -120,8 +120,8 @@ services:
     networks:
       - test
 
-  peer0.mexico.universidades.com:
-    container_name: peer0.mexico.universidades.com
+  peer0.bogota.universidades.com:
+    container_name: peer0.bogota.universidades.com
     image: hyperledger/fabric-peer:2.3.3
     labels:
       service: hyperledger-fabric
@@ -134,14 +134,14 @@ services:
       - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
       - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
       - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
-      - CORE_PEER_ID=peer0.mexico.universidades.com
-      - CORE_PEER_ADDRESS=peer0.mexico.universidades.com:9051
+      - CORE_PEER_ID=peer0.bogota.universidades.com
+      - CORE_PEER_ADDRESS=peer0.bogota.universidades.com:9051
       - CORE_PEER_LISTENADDRESS=0.0.0.0:9051
-      - CORE_PEER_CHAINCODEADDRESS=peer0.mexico.universidades.com:9052
+      - CORE_PEER_CHAINCODEADDRESS=peer0.bogota.universidades.com:9052
       - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:9052
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.mexico.universidades.com:9051
-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.mexico.universidades.com:9051
-      - CORE_PEER_LOCALMSPID=MexicoMSP
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.bogota.universidades.com:9051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.bogota.universidades.com:9051
+      - CORE_PEER_LOCALMSPID=BogotaMSP
       - CORE_OPERATIONS_LISTENADDRESS=0.0.0.0:19051
       - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
       - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdb1:5984
@@ -149,9 +149,9 @@ services:
       - CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD=adminpw
     volumes:
         - /var/run/docker.sock:/host/var/run/docker.sock
-        - ../organizations/peerOrganizations/mexico.universidades.com/peers/peer0.mexico.universidades.com/msp:/etc/hyperledger/fabric/msp
-        - ../organizations/peerOrganizations/mexico.universidades.com/peers/peer0.mexico.universidades.com/tls:/etc/hyperledger/fabric/tls
-        - peer0.mexico.universidades.com:/var/hyperledger/production
+        - ../organizations/peerOrganizations/bogota.universidades.com/peers/peer0.bogota.universidades.com/msp:/etc/hyperledger/fabric/msp
+        - ../organizations/peerOrganizations/bogota.universidades.com/peers/peer0.bogota.universidades.com/tls:/etc/hyperledger/fabric/tls
+        - peer0.bogota.universidades.com:/var/hyperledger/production
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
     command: peer node start
     ports:
@@ -178,7 +178,7 @@ services:
     volumes:
         - ../organizations:/opt/gopath/src/github.com/hyperledger/fabric/peer/organizations
     depends_on:
-      - peer0.barcelona.universidades.com
-      - peer0.mexico.universidades.com
+      - peer0.madrid.universidades.com
+      - peer0.bogota.universidades.com
     networks:
       - test

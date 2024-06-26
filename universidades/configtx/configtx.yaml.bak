@@ -22,43 +22,43 @@ Organizations:
         OrdererEndpoints:
             - orderer.universidades.com:7050
 
-    - &Barcelona
-        Name: BarcelonaMSP
-        ID: BarcelonaMSP
+    - &Madrid
+        Name: MadridMSP
+        ID: MadridMSP
 
-        MSPDir: ../organizations/peerOrganizations/barcelona.universidades.com/msp
+        MSPDir: ../organizations/peerOrganizations/madrid.universidades.com/msp
         Policies:
             Readers:
                 Type: Signature
-                Rule: "OR('BarcelonaMSP.admin', 'BarcelonaMSP.peer', 'BarcelonaMSP.client')"
+                Rule: "OR('MadridMSP.admin', 'MadridMSP.peer', 'MadridMSP.client')"
             Writers:
                 Type: Signature
-                Rule: "OR('BarcelonaMSP.admin', 'BarcelonaMSP.client')"
+                Rule: "OR('MadridMSP.admin', 'MadridMSP.client')"
             Admins:
                 Type: Signature
-                Rule: "OR('BarcelonaMSP.admin')"
+                Rule: "OR('MadridMSP.admin')"
             Endorsement:
                 Type: Signature
-                Rule: "OR('BarcelonaMSP.peer')"
+                Rule: "OR('MadridMSP.peer')"
 
-    - &Mexico
-        Name: MexicoMSP
-        ID: MexicoMSP
+    - &Bogota
+        Name: BogotaMSP
+        ID: BogotaMSP
 
-        MSPDir: ../organizations/peerOrganizations/mexico.universidades.com/msp
+        MSPDir: ../organizations/peerOrganizations/bogota.universidades.com/msp
         Policies:
             Readers:
                 Type: Signature
-                Rule: "OR('MexicoMSP.admin', 'MexicoMSP.peer', 'MexicoMSP.client')"
+                Rule: "OR('BogotaMSP.admin', 'BogotaMSP.peer', 'BogotaMSP.client')"
             Writers:
                 Type: Signature
-                Rule: "OR('MexicoMSP.admin', 'MexicoMSP.client')"
+                Rule: "OR('BogotaMSP.admin', 'BogotaMSP.client')"
             Admins:
                 Type: Signature
-                Rule: "OR('MexicoMSP.admin')"
+                Rule: "OR('BogotaMSP.admin')"
             Endorsement:
                 Type: Signature
-                Rule: "OR('MexicoMSP.peer')"
+                Rule: "OR('BogotaMSP.peer')"
 
 ################################################################################
 #   SECTION: Capabilities
@@ -161,6 +161,6 @@ Profiles:
         Application:
             <<: *ApplicationDefaults
             Organizations:
-                - *Barcelona
-                - *Mexico
+                - *Madrid
+                - *Bogota
             Capabilities: *ApplicationCapabilities
